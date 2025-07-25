@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import { createServer } from 'http';
 import * as dotenv from 'dotenv';
-import connectDB from '../database';
+import connectDB from './database';
 import routes from './Routes';
 
 
