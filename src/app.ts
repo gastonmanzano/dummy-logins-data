@@ -20,7 +20,7 @@ class Application {
     this.port = process.env.PORT || '3000';
     this.routes = routes;
     this.cors = cors({
-      exposedHeaders: 'Authorization',
+      exposedHeaders: '*',
     });
     this.server = createServer(this.app);
 
