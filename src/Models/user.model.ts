@@ -44,7 +44,7 @@ const AddressSchema: Schema = new Schema(
  */
 const UserSchema: Schema = new Schema(
   {
-    email: { type: String, required: [true, 'Error falta el campo email'], unique: true },
+    email: { type: String, required: [true, 'Error falta el campo email'] },
     logDate: { type: String, required: [true, 'Error falta el campo logDate'] },
     logInTime: { type: LogInTimeSchema, required: [true, 'Error falta el campo logInTime'] },
     httpAction: { type: String, required: [true, 'Error falta el campo httpAction'] },

@@ -78,14 +78,15 @@ export const paginate = async <T>(
 	{ page = 1, limit = 10, sort = {}, filter = {}, populate }: PaginationOptions
 ): Promise<PaginatedResult<T>> => {
 	const total = await model.countDocuments(filter).exec();
-	const totalPages = Math.max(Math.ceil(total / limit), 1);
+	const fixedLimit = Math.min(limit, 100);
+	const totalPages = Math.max(Math.ceil(total / fixedLimit), 1);
 
 	page = Math.min(page, totalPages);
 
 	// Calcular cuántos documentos se deben saltar
-	const skip = (page - 1) * limit;
+	const skip = (page - 1) * fixedLimit;
 
-	let query = model.find(filter).sort(sort).skip(skip).limit(limit);
+	let query = model.find(filter).sort(sort).skip(skip).limit(fixedLimit);
 
 	if (populate) {
 		query = query.populate(populate);

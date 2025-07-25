@@ -4,7 +4,6 @@ import { getUsersData, createUser } from '../Services/user.service';
 
 const getUsers = async(req: Request, res:Response) => {
     try{
-        console.log("getting users");
         const page = parseInt(req.query.page as string) || 1;
         const limit = parseInt(req.query.limit as string) || 10;
 
